@@ -8,7 +8,13 @@
 import Foundation
 
 class DetailViewModel: ObservableObject {
-    @Published var posts = [Posts]()
+    let postId: Int
+    @Published var postDetail: Posts? = nil
+//    @Published var posts = [Posts]()
+    
+    init(postId: Int) {
+        self.postId = postId
+    }
     
     func fetchPosts() {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {
@@ -26,11 +32,10 @@ class DetailViewModel: ObservableObject {
             
             do {
                 let decodingPosts = try JSONDecoder().decode([Posts].self, from: data)
-                self.posts = decodingPosts
+                self.postDetail = decodingPosts.first(where: {$0.id == self.postId})
             }catch {
                 print("Error \(error)")
             }
-            
             
         }.resume()
     }

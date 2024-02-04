@@ -14,7 +14,7 @@ struct HomeView: View {
         NavigationView(content: {
             
                 List(viewModel.posts, id: \.title) { post in
-                    NavigationLink(destination: DetailView(post: post)){
+                    NavigationLink(destination: DetailView(viewModel: DetailViewModel(postId: post.id))){
                     Text(post.title)
                     
                 }

@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct DetailView: View {
-    let post: Posts
-    @StateObject var viewModel = DetailViewModel()
+    @StateObject var viewModel: DetailViewModel
     
     var body: some View {
         VStack {
-            Text(post.title)
-            Text(post.body)
+            if let postDetail = viewModel.postDetail {
+                Text(postDetail.title)
+                Text(postDetail.body)
+            }
         }
         .onAppear {
             viewModel.fetchPosts()

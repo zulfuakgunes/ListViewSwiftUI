@@ -8,6 +8,7 @@
 import Foundation
 
 struct Posts: Decodable {
+    let id: Int
     let title: String
     let body: String
 }

@@ -1,17 +1,17 @@
 //
-//  HomeViewModel.swift
+//  PhotosViewModel.swift
 //  ListViewSwiftUI
 //
-//  Created by Zülfü Akgüneş on 4.02.2024.
+//  Created by Zülfü Akgüneş on 5.02.2024.
 //
 
 import Foundation
 
-class HomeViewModel: ObservableObject {
-    @Published var posts = [Posts]()
+class PhotosViewModel: ObservableObject {
+    @Published var photos: [Photos] = []
     
-    func fetchPosts() {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {
+    func fetchPhotos() {
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/photos") else {
             return
         }
         
@@ -25,14 +25,14 @@ class HomeViewModel: ObservableObject {
             }
             
             do {
-                let decodingPosts = try JSONDecoder().decode([Posts].self, from: data)
+                let decodingPosts = try JSONDecoder().decode([Photos].self, from: data)
                 DispatchQueue.main.async {
-                    self.posts = decodingPosts
+                    self.photos = decodingPosts
                 }
+
             }catch {
                 print("Error \(error)")
             }
-            
             
         }.resume()
     }

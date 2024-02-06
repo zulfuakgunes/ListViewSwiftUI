@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
-    
+    @State var searchText = ""
     var body: some View {
         NavigationView(content: {
             
@@ -20,6 +20,7 @@ struct HomeView: View {
                 }
             }
         })
+        .searchable(text: $searchText, prompt: "Ara")
         .onAppear {
             viewModel.fetchPosts()
         }

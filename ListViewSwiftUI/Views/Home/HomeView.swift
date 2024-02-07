@@ -17,7 +17,6 @@ struct HomeView: View {
         }
         return viewModel.posts.filter({$0.title.localizedCaseInsensitiveContains(searchText)})
     }
-    
 
     var body: some View {
         NavigationView(content: {

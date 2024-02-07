@@ -9,6 +9,7 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     @Published var posts = [Posts]()
+    @Published var filteredPosts = [Posts]()
     
     func fetchPosts() {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {

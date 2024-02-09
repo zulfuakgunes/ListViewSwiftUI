@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var authViewModel = AuthViewModel()
+    
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            PhotosView()
-                .tabItem {
-                    Label("Photos", systemImage: "magnifyingglass")
-                }
+        if authViewModel.isAuthenticated {
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                PhotosView()
+                    .tabItem {
+                        Label("Photos", systemImage: "magnifyingglass")
+                    }
+            }
+        } else {
+            SignUpView().environmentObject(authViewModel)
         }
+        
+        
+        
     }
 }

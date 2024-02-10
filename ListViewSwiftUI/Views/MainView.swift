@@ -17,6 +17,10 @@ struct MainView: View {
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
+                AddWordView()
+                    .tabItem {
+                        Label("Add", systemImage: "book.fill")
+                    }
                 PhotosView()
                     .tabItem {
                         Label("Photos", systemImage: "magnifyingglass")

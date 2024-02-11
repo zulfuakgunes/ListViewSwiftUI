@@ -23,7 +23,7 @@ struct MainView: View {
                     }
                 PhotosView()
                     .tabItem {
-                        Label("Photos", systemImage: "magnifyingglass")
+                        Label("Photos", systemImage: "photo")
                     }
             }
         } else {
